@@ -169,7 +169,7 @@ class TimeSelectButton(UiItem):
             pygame.draw.rect(surface, (int(47 * self.hithlight), int(37 * self.hithlight), int(53 * self.hithlight)), self.rect, 0, 6)
         else:
             pygame.draw.rect(surface, (int(20 * self.hithlight), int(17 * self.hithlight), int(15 * self.hithlight)), self.rect, 0, 6)
-        write(surface, str(self.time) + 'min', self.pos + Vec2(5, 5), 30)
+        surface.blit(write(surface, str(self.time) + 'min', self.pos + Vec2(5, 5), 30), self.pos + Vec2(5, 5))
     def update(self, delta_time):
         global timer_time
         self.rect = pygame.Rect(self.pos.x + 2, self.pos.y, 66, 28)
