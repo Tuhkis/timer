@@ -3,12 +3,11 @@ from functools import wraps
 
 try:
     import pygame
-    from pygame.math import Vector2 as Vec2
 except:
     os.system('python -m pip install pygame')
     import pygame
-    from pygame.math import Vector2 as Vec2
 
+from pygame.math import Vector2 as Vec2
 pygame.init()
 pygame.mixer.init()
 
@@ -26,12 +25,12 @@ def memoise(func):
         return cache[key]
     return wrapper
 
-@memoise
 def write(win, text, pos, size=32, colour=(244, 244, 244)):
     font = pygame.font.SysFont('freesanbold.ttf', size)
     text1 = font.render(str(text), True, colour)
     return text1
 
+@memoise
 def get_centre(surface):
     return Vec2(
         surface.get_width() * 0.5,
@@ -189,6 +188,9 @@ def main():
     main_clock = pygame.time.Clock()
     FPS = 60
     run = True
+
+    pygame.mixer.music.load('./song.mp3')
+    pygame.mixer.music.play(1000)
     
     button = TimerButton(get_centre(win))
     button.set_timeout_time(timer_time)
